@@ -11,6 +11,5 @@ before_script:
   - gem install sass
   - bower install
 after_script:
-  - istanbul cover _mocha -- --recursive
-  - codeclimate < ./coverage/lcov.info
+  - codeclimate < coverage/**/lcov.info
 services: mongodb
