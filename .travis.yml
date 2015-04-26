@@ -12,5 +12,5 @@ before_script:
   - bower install
 after_script:
   - grunt test:coverage
-  - codeclimate < coverage/*/unit/lcov.info
+  - codeclimate < coverage/**/unit/lcov.info
 services: mongodb
