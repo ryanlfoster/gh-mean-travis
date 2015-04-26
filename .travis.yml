@@ -1,17 +1,24 @@
 language: node_js
 node_js:
-  - '0.11'
-  - '0.12'
+- '0.11'
+- '0.12'
 addons:
   code_climate:
     repo_token:
       secure: N2YPsBcB+T5QYENXooHyJ4RJ3RQNhVIOdjr6OPtgJgQSbqP0nAtKxxlXptPNE+Y+CsS6tU9KMECkw7PI0mEJ6ylICXwTnXr+8oGWOjjXwYD/2JG8TBRuha4vpH9JMEKs8jNsUce3m1UJlDjGHnkrtNBOmiRUBWjRnTj8MfU+zP4=
 before_script:
-  - npm install -g bower grunt-cli
-  - gem install sass
-  - bower install
+- npm install -g bower grunt-cli
+- gem install sass
+- bower install
 after_script:
-  - grunt test:coverage
-  - codeclimate < coverage/server/unit/lcov.info
-  - codeclimate < coverage/client/unit/lcov.info
+- grunt test:coverage
+- codeclimate < coverage/server/unit/lcov.info
+- codeclimate < coverage/client/unit/lcov.info
 services: mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: F6ObRmDHyHUAsop4hN3DaDKGt2CG0jGLUmKosBnm0/oeB1qNrmulNR4yWnh/TLl8htXSlNL6oZdhIIwWjI+M7LQcOHSlqdHzmDkl95loZsCqs3OExiFC5+iGSsNj3luVb6UooUXJ0oY0CXLC0LApHCrn+heVS4NzPb1E4w0kKD4=
+  app: gh-mean-travis
+  on:
+    repo: lwieske/gh-mean-travis
