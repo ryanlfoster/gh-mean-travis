@@ -38,6 +38,7 @@ module.exports = function(config) {
       '**/*.jade': 'ng-jade2js',
       '**/*.html': 'html2js',
       '**/*.coffee': 'coffee',
+      'client/app/**/*.js': 'coverage',
     },
 
     ngHtml2JsPreprocessor: {
@@ -48,34 +49,24 @@ module.exports = function(config) {
       stripPrefix: 'client/'
     },
 
-    // list of files / patterns to exclude
     exclude: [],
 
-    // web server port
     port: 8080,
 
-    // level of logging
-    // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
     logLevel: config.LOG_INFO,
 
-
-    // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
 
-
-    // Start these browsers, currently available:
-    // - Chrome
-    // - ChromeCanary
-    // - Firefox
-    // - Opera
-    // - Safari (only Mac)
-    // - PhantomJS
-    // - IE (only Windows)
     browsers: ['PhantomJS'],
 
+    singleRun: true,
 
-    // Continuous Integration mode
-    // if true, it capture browsers, run tests and exit
-    singleRun: false
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter:{
+      type: 'lcov',
+      dir : 'coverage',
+      subdir: 'client/unit'
+    },
   });
 };
